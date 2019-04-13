@@ -1,0 +1,59 @@
+﻿@page "{handler?}"
+@model LoginCodeCase.Pages.UserFormsModel
+@using LoginCodeCase.Enums
+@using System.Linq
+@{
+    ViewData["Title"] = "Hoş Geldiniz";
+}
+@if (TempData[UserFormsModel.PageTitle] is string pagetitle)
+{
+    <h2>@pagetitle</h2>
+}
+@if (TempData[UserFormsModel.MessageKey] is string message)
+{
+    <p>@message</p>
+}
+<div class="col-lg-6">
+    @* handler ismi url parametresinden alınmaktadır. URL parametresinden alınan göreve göre Model.FormType değişkeni
+        Enumlarda belirlenen tiplere göre switch edilir. Eşleşen id ye göre ilgili component render edilir. *@
+    <form method="post">
+        @switch (Model.FormType)
+        {
+            case (int)FormTypes._login:
+                @await Component.InvokeAsync("_login", new { login = Model.Login });
+                break;
+            case (int)FormTypes._register:
+                @await Component.InvokeAsync("_register", new { RegisterUser = Model.RegisterUser });
+                break;
+            case (int)FormTypes._forget:
+                @await Component.InvokeAsync("_forget", new { pwd = Model.Pass });
+                break;
+        }
+    </form>
+</div>
+@section PageScripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "/UserForms?handler=Cities",
+                data: "",
+                success: function (data) {
+                    $("#Cities").html('').html(data);
+                }
+            });
+
+
+            $('#Cities').change(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "/UserForms?handler=District&city=" + $(this).val(),
+                    data: "",
+                    success: function (data) {
+                        $("#Districts").html('').html(data);
+                    }
+                });
+            });
+        });
+    </script>
+}

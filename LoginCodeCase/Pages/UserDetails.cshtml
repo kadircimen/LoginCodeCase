@@ -1,0 +1,16 @@
+﻿@page
+@model LoginCodeCase.Pages.UserDetailsModel
+@{
+    ViewData["Title"] = "UserDetails";
+}
+
+<h2>@Model.UserDetails.Name  @Model.UserDetails.Surname</h2>
+<ul class="userDetailsList">
+    <li><b>Telefon</b></li>
+    <li>@Model.UserDetails.Phone</li>
+    <li><b>Doğum Tarihi</b></li>
+    <li>@Model.UserDetails.BirthDay</li>
+    <li><b>E-Mail</b></li>
+    <li>@Model.UserDetails.Email</li>
+</ul>
+<a href="/forms/passwordform">Şifre Değiştir</a> &nbsp;|&nbsp;  <a href="/forms/signout">Oturumu Kapat</a>

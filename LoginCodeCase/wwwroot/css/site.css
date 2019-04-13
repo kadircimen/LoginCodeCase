@@ -28,10 +28,23 @@ body {
     margin: 15px;
 }
 
+.mainContainer {
+    display: inline-block;
+    width: 960px;
+    margin: 0px auto;
+}
+
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
     .carousel-caption {
         display: none;
     }
+}
+
+.userDetailsList li {
+    list-style-type: none;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
 }

@@ -1,0 +1,50 @@
+﻿@using HtmlHelpers.BeginCollectionItemCore;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Info.UserDto
+
+@using (Html.BeginCollectionItem("UserDto"))
+{
+    <div class="form-group">
+        <label for="email">Ad</label>
+        <input asp-for="Name" name="Name" class="form-control input-sm" />
+    </div>
+    <div class="form-group">
+        <label for="email">Soyad</label>
+        <input asp-for="Surname" name="Surname" class="form-control input-sm" />
+    </div>
+    <div class="form-group">
+        <label for="email">E-Posta</label>
+        <input asp-for="Email" name="Email" class="form-control input-sm" />
+    </div>
+    <div class="form-group">
+        <label for="email">Telefon</label>
+        <input asp-for="Phone" name="Phone" class="form-control input-sm" />
+    </div>
+    <div class="form-group">
+        <label for="email">Doğum Tarihi</label>
+        <input type="date" name="Birthday" asp-for="BirthDay" class="form-control input-sm" />
+    </div>
+    <div class="form-group">
+        <label for="email">Şifre</label>
+        <input asp-for="Password" name="Password" type="password" class="form-control input-sm" />
+    </div>
+    <div class="form-group">
+        <label for="email">İl</label>
+        <select asp-for="CityID" id="Cities" name="CityID" class="form-control input-sm"></select>
+    </div>
+    <div class="form-group">
+        <label for="email">İlçe</label>
+        <select asp-for="DistrictID" id="Districts" name="DistrictID" class="form-control input-sm"></select>
+    </div>
+    <button type="submit" asp-page-handler="RegisterForm" class="btn btn-success">Kaydet</button>
+    <br />
+    <a href="/forms/loginpage">Giriş Yap</a><br />
+    <a href="/forms/registerpage">Üye Ol</a>
+}
+
+

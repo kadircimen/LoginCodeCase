@@ -1,0 +1,25 @@
+﻿@using HtmlHelpers.BeginCollectionItemCore;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@* Form içeriğinin alınacağı class'ın model tanımlaması *@
+@model Info.ChangePass
+@* Item ları Collect eden eklenti aracılığı ile post edilmeye hazır hale getirilmesi *@
+@using (Html.BeginCollectionItem("ChangePass"))
+{
+    <div class="form-group">
+        <label for="Pass">E-Posta Adresi</label>
+        <input asp-for="Email" name="Email" class="form-control input-sm" />
+    </div>
+    <div class="form-group">
+        <label for="Pass">Yeni Şifre</label>
+        <input asp-for="Password" name="Password" type="password" class="form-control input-sm" />
+    </div>
+    @*form verilerini post edecek olan buttonun "asp-page-handler" attr'sine verilen handler değeri,
+        componentları taşıyan sayfanın OnPost ayrıştırmasını gerçekleştirir *@
+    <button type="submit" class="btn btn-success pull-right" asp-page-handler="PasswordForm">Güncelle</button>
+    <a href="/forms/loginpage">Giriş Yap</a><br />
+    <a href="/forms/registerpage">Üye Ol</a>
+}
